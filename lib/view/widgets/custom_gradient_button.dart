@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 
 class CustomgradentButton extends StatelessWidget {
-  //final Color color;
   final Alignment alignment;
-  //final double fontsize;
- // final String text;
   final Function onPressed;
   final Widget child;
 
@@ -16,13 +12,11 @@ class CustomgradentButton extends StatelessWidget {
   final double? buttonWidth ;
   final double? borderRadius ;
 
+
   CustomgradentButton({
     required this.buttonheight,
     required this.buttonWidth,
-  //  required this.color,
     this.alignment = Alignment.center,
-    //this.fontsize = 18,
-    //this.text = ' ',
     this.borderColor,
     required this.onPressed,
     required this.child,
@@ -61,7 +55,7 @@ class CustomgradentButton extends StatelessWidget {
           onPressed();
         },
 
-        padding: EdgeInsets.all(10),
+        //padding: EdgeInsets.all(10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
           side: BorderSide(

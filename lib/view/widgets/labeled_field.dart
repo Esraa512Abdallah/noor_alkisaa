@@ -2,51 +2,54 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 
-class CustomTextFeildWithLable extends StatelessWidget {
+class CustomTextFieldWithLabel extends StatelessWidget {
   final bool obscureText;
 
-  final String lableText;
+  final String labelText;
   final String hintText;
 
-  final Color? iconcolor;
+  final Color? iconColor;
 
   final Widget suffixWidget;
 
-  late final TextInputType keyboardType;
+  final String? errorMessage;
+
+  final TextInputType keyboardType;
 
   //
-  late final Function(String?)? onClick;
+  final Function(String?)? onSaved;
 
   //
 
-  CustomTextFeildWithLable({
+  CustomTextFieldWithLabel({
     required this.suffixWidget,
-    this.iconcolor,
-    required this.lableText,
+    this.iconColor,
+    required this.labelText,
     required this.obscureText,
-    required this.onClick,
+    required this.onSaved,
     required this.keyboardType,
     required this.hintText,
+    this.errorMessage,
   });
 
   @override
   Widget build(BuildContext context) {
     String? _errorMessage(String str) {
-      if (lableText == AppLocal.of(context).getTranslated('رقم الجوال')) {
+      if (labelText == AppLocal.of(context).getTranslated('رقم الجوال')) {
         return AppLocal.of(context).getTranslated('الرجاء ادخال رقم الجوال');
-      } else if (lableText ==
+      } else if (labelText ==
           AppLocal.of(context).getTranslated('كلمة المرور')) {
         return AppLocal.of(context).getTranslated('الرجاء ادخال كلمه المرور');
-      } else if (lableText ==
+      } else if (labelText ==
           AppLocal.of(context).getTranslated('تأكيد كلمة المرور')) {
         return AppLocal.of(context).getTranslated('الرجاء تاكيد كلمه المرور');
-      } else if (lableText ==
+      } else if (labelText ==
           AppLocal.of(context).getTranslated('البريد الالكتروني')) {
         return AppLocal.of(context)
             .getTranslated('الرجاء ادخال البريد الالكترونى');
-      } else if (lableText == AppLocal.of(context).getTranslated('الاسم')) {
+      } else if (labelText == AppLocal.of(context).getTranslated('الاسم')) {
         return AppLocal.of(context).getTranslated('الرجاء ادخال الاسم');
       }
     }
@@ -56,11 +59,11 @@ class CustomTextFeildWithLable extends StatelessWidget {
     // TODO: implement build
     return Container(
       child: TextFormField(
-        autofocus: true,
-        onSaved: onClick,
+
+        onSaved: onSaved,
         validator: (value) {
           if (value!.isEmpty) {
-            return _errorMessage(lableText);
+            return _errorMessage(labelText);
           }
         },
         cursorColor: Colors.grey,
@@ -77,11 +80,10 @@ class CustomTextFeildWithLable extends StatelessWidget {
           ),
           errorStyle: Theme.of(context).textTheme.bodyText1,
           labelStyle: Theme.of(context).textTheme.bodyText1,
-          labelText: lableText,
+          labelText: labelText,
           filled: true,
           fillColor: Colors.white,
           enabledBorder: OutlineInputBorder(
-
             borderRadius: BorderRadius.circular(15.0),
             borderSide: BorderSide(
               width: 1.8,

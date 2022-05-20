@@ -279,7 +279,7 @@ class _CreditMove2State extends State<CreditMove2> {
                                                                         children: [
                                                                           Padding(
                                                                             padding:
-                                                                            const EdgeInsets.only(
+                                                                             EdgeInsets.only(
                                                                               top: 5.0,
                                                                               right: 10.0,
                                                                               left: 5.0,

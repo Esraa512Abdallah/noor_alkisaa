@@ -1,8 +1,9 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:noor_alkisaa/gen/assets.gen.dart';
 import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -72,18 +73,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        actions:[
-          IconButton(onPressed: () {
-            _scaffoldKey.currentState!.openEndDrawer();
-          }, icon: Icon(Icons.alarm_add_outlined),),
-
-
+        actions: [
+          InkWell(
+            onTap: () {
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            child: Assets.images.drawerIcon.image(),
+          ),
         ],
       ),
       endDrawer: Drawer(
         child: Column(
           children: [
-            DrawerHeader(child: Image.asset("assets/images/layer3.png")),
+            DrawerHeader(
+              child: Assets.images.layer3.image(),
+            ),
             Divider(
               endIndent: SizeConfig.defaultSize! * 1,
               indent: SizeConfig.defaultSize! * 1,

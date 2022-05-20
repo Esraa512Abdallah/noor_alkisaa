@@ -9,8 +9,8 @@ import 'package:noor_alkisaa/view/widgets/custom_button.dart';
 import 'package:noor_alkisaa/view/widgets/custom_gradient_button.dart';
 import 'package:noor_alkisaa/view/widgets/dashed_circle.dart';
 import 'package:noor_alkisaa/view/widgets/labeled_field.dart';
-import 'package:noor_alkisaa/view/widgets/pin_code_fields.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/view/widgets/pop_menu_item.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -27,7 +27,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _isObscure2 = true;
   String? action_text = " ";
 
-  String? _name ;
+  String? _name , _region ;
+  String  _regionVal = "الصف";
+  bool selected = false ;
 
   var _currencies = [
     "Food",
@@ -137,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                      padding:  EdgeInsets.only(top: 8.0),
                       child: Text(
                         AppLocal.of(context).getTranslated("إضافة صور الشعار"),
                         style: TextStyle(
@@ -154,9 +156,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   child: Column(
                     children: [
-                      CustomTextFeildWithLable(
+                      CustomTextFieldWithLabel(
                         hintText: 'مصطفى محمد',
-                        onClick: (val) {
+                        onSaved: (val) {
                           setState(() {
                             _name = val ;
                           });
@@ -166,17 +168,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: primaryGreenColor,
                           size: 30,
                         ),
-                        lableText: AppLocal.of(context).getTranslated("الاسم"),
+                        labelText: AppLocal.of(context).getTranslated("الاسم"),
                         obscureText: false,
                         keyboardType: TextInputType.name,
+                       // errorMessage: AppLocal.of(context).getTranslated('الرجاء ادخال الاسم'),
                       ),
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),
-                      CustomTextFeildWithLable(
+                      CustomTextFieldWithLabel(
                         hintText: "0123456789",
+                        //errorMessage: AppLocal.of(context).getTranslated('الرجاء رقم الجوال'),
                         //controller: textEditingController,
-                          onClick: (val) {},
+                          onSaved: (val) {},
                           suffixWidget: Container(
                             //height: 20,
 
@@ -525,47 +529,61 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   AppLocal.of(context).getTranslated("تفعيل"),
                                   // "تفعيل",
                                   style: Theme.of(context).textTheme.button,
-                                )),
+                                )
+                            ),
                           ),
-                          lableText:
+                          labelText:
                           AppLocal.of(context).getTranslated("رقم الجوال"),
                           obscureText: false,
                           keyboardType: TextInputType.name),
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),
-                      CustomTextFeildWithLable(
+                      CustomTextFieldWithLabel(
                         hintText: "Username@gmail.com",
+                        // errorMessage: AppLocal.of(context)
+                        //     .getTranslated('الرجاء ادخال البريد الالكترونى'),
                         //controller: textEditingController,
-                          onClick: (val) {},
+                          onSaved: (val) {},
                           suffixWidget: Image.asset("assets/images/mail.png"),
-                          lableText: AppLocal.of(context)
+                          labelText: AppLocal.of(context)
                               .getTranslated("البريد الالكترونى"),
                           obscureText: false,
-                          keyboardType: TextInputType.name),
+                          keyboardType: TextInputType.name,
+                      ),
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),
-                      CustomTextFeildWithLable(
-                        hintText: "بابل",
+                      CustomTextFieldWithLabel(
+                        hintText:  'بابل' ,
                         //controller: textEditingController,
-                          onClick: (val) {},
-                          suffixWidget: DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                              value: _selectedLocation,
-                              onChanged: (String? value) {
-                                setState(() {
-                                  _selectedLocation = value!;
-                                });
-                              },
-                              items: _locations.map((String location) {
-                                return new DropdownMenuItem<String>(
-                                  child: new Text(location),
-                                  value: location,
-                                );
-                              }).toList(),
-                            ),
-                          ),
+                          onSaved: (val) {
+                            setState(() {
+                               _region = val ;
+                            });
+                          },
+
+                          suffixWidget:CustomPopUpMenuItme(
+                            title: _regionVal,
+                          ) ,
+
+
+                          // suffixWidget: DropdownButtonHideUnderline(
+                          //   child: DropdownButton<String>(
+                          //     value: _selectedLocation,
+                          //     onChanged: (String? value) {
+                          //       setState(() {
+                          //         _selectedLocation = value!;
+                          //       });
+                          //     },
+                          //     items: _locations.map((String location) {
+                          //       return new DropdownMenuItem<String>(
+                          //         child: new Text(location),
+                          //         value: location,
+                          //       );
+                          //     }).toList(),
+                          //   ),
+                          // ),
                           // IconButton(
                           //   icon: Icon(
                           //     Icons.arrow_drop_down,
@@ -576,17 +594,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           //   color: primaryGreenColor, onPressed: () {},
                           //   //size: 30,
                           // ),
-                          lableText:
+                          labelText:
                           AppLocal.of(context).getTranslated("المنطقه"),
                           obscureText: false,
+                          // errorMessage: AppLocal.of(context)
+                          //     .getTranslated('الرجاء ادخال المنطقه'),
                           keyboardType: TextInputType.name),
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),
-                      CustomTextFeildWithLable(
+                      CustomTextFieldWithLabel(
+
                         //controller: textEditingController,
                         hintText: "حى المعلمين,الدروه,بغداد",
-                          onClick: (val) {},
+                          onSaved: (val) {},
                           suffixWidget: Icon(
                             Icons.add_location,
                             color: primaryGreenColor,
@@ -595,22 +616,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           //size: 30,
 
                           //Image.asset("assets/images/map-marker.png",height: 10,width: 10,),
-                          lableText:
+                          labelText:
                           AppLocal.of(context).getTranslated("العنوان"),
                           obscureText: false,
                           keyboardType: TextInputType.name),
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),
-                      CustomTextFeildWithLable(
+                      CustomTextFieldWithLabel(
                         //controller: textEditingController,
+                       // errorMessage: "AppLocal.of(context).getTranslated('الرجاء ادخال كلمه المرور')",
                         hintText: "**********************",
-                        onClick: (val) {},
+                        onSaved: (val) {},
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: _isObscure1,
-                        lableText:
+                        labelText:
                         AppLocal.of(context).getTranslated("كلمة المرور"),
-                        iconcolor: primaryGreenColor,
+                        iconColor: primaryGreenColor,
                         suffixWidget: IconButton(
                           color: primaryGreenColor,
                           onPressed: () {
@@ -626,15 +648,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),
-                      CustomTextFeildWithLable(
+                      CustomTextFieldWithLabel(
                         hintText: "********************",
-
-                        onClick: (val) {},
+                        // errorMessage:AppLocal.of(context)
+                        //     .getTranslated('الرجاء تاكيد كلمه المرور') ,
+                        onSaved: (val) {},
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: _isObscure2,
-                        lableText: AppLocal.of(context)
+                        labelText: AppLocal.of(context)
                             .getTranslated("تأكيد كلمة المرور"),
-                        iconcolor: primaryGreenColor,
+                        iconColor: primaryGreenColor,
                         suffixWidget: IconButton(
                           color: primaryGreenColor,
                           onPressed: () {
@@ -651,11 +674,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: SizeConfig.defaultSize! * 2,
                       ),
                       CustomButton(
-                        buttonheight: 50,
+                        buttonWidth: MediaQuery.of(context).size.width,
+                        buttonHeight: 50,
                         color: Colors.white,
                         onPressed: () async {
                           await pickerCamera((value) {
                             selectedPhoto1 = value;
+
+                            print("pathhhhhhhhhhhhh $selectedPhoto1");
+
                           });
                         },
                         child: Row(
@@ -718,6 +745,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     onTap: () {
                                       setState(() {
                                         selectedPhoto1 = null;
+
                                       });
                                     },
                                     child: Icon(
@@ -738,7 +766,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: SizeConfig.defaultSize! * 2,
                       ),
                       CustomButton(
-                        buttonheight: 50,
+                        buttonWidth: MediaQuery.of(context).size.width,
+                        buttonHeight: 50,
                         color: Colors.white,
                         onPressed: () async {
                           await pickerCamera((value) {
@@ -817,7 +846,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: SizeConfig.defaultSize! * 2,
                       ),
                       CustomButton(
-                        buttonheight: 50,
+                        buttonWidth: MediaQuery.of(context).size.width,
+                        buttonHeight: 50,
                         color: Colors.white,
                         onPressed: () async {
                           await pickerCamera((value) {
@@ -901,7 +931,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: SizeConfig.defaultSize! * 2,
                       ),
                       CustomButton(
-                        buttonheight: 50,
+                        buttonWidth: MediaQuery.of(context).size.width,
+                        buttonHeight: 50,
                         color: Colors.white,
                         onPressed: () async {
                           await pickerCamera((value) {
@@ -985,7 +1016,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: SizeConfig.defaultSize! * 2,
                       ),
                       CustomButton(
-                        buttonheight: 50,
+                        buttonWidth: MediaQuery.of(context).size.width,
+                        buttonHeight: 50,
                         color: Colors.white,
                         onPressed: () async {
                           await pickerCamera((value) {
@@ -1068,7 +1100,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: SizeConfig.defaultSize! * 2,
                       ),
                       CustomButton(
-                        buttonheight: 50,
+                        buttonWidth: MediaQuery.of(context).size.width,
+                        buttonHeight: 50,
                         color: Colors.white,
                         onPressed: () async {
                           await pickerCamera((value) {
@@ -1168,7 +1201,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               AppLocal.of(context).getTranslated("تسجيل"),
                               style: Theme.of(context).textTheme.button,
                             ),
-                          )),
+                          )
+                      ),
                       SizedBox(
                         height: SizeConfig.defaultSize! * 2,
                       ),

@@ -3,7 +3,7 @@ import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 import 'package:noor_alkisaa/view/widgets/custom_gradient_button.dart';
 import 'package:noor_alkisaa/view/widgets/labeled_field.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 
 class ForgetPasswordScreen1 extends StatefulWidget {
   const ForgetPasswordScreen1({Key? key}) : super(key: key);
@@ -78,16 +78,16 @@ class _ForgetPasswordScreen1State extends State<ForgetPasswordScreen1> {
                           SizedBox(
                             height: SizeConfig.defaultSize! * 3,
                           ),
-                          CustomTextFeildWithLable(
+                          CustomTextFieldWithLabel(
                             hintText: "********************",
                             keyboardType: TextInputType.emailAddress,
-                            onClick: (val) {
+                            onSaved: (val) {
                               _email = val;
                             },
                             obscureText: false,
-                            lableText: AppLocal.of(context)
+                            labelText: AppLocal.of(context)
                                 .getTranslated("البريد الالكتروني"),
-                            iconcolor: primaryGreenColor,
+                            iconColor: primaryGreenColor,
                             suffixWidget: Image.asset("assets/images/mail.png"),
                           ),
                           SizedBox(

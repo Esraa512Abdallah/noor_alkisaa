@@ -81,15 +81,15 @@ class _CreditRequestState extends State<CreditRequest> {
                     padding: EdgeInsets.all(15),
                     child: Column(
                       children: [
-                        CustomTextFeildWithLable(
+                        CustomTextFieldWithLabel(
                           hintText: "10.000",
                           keyboardType: TextInputType.number,
-                          onClick: (val) {
+                          onSaved: (val) {
                             _value = val;
                           },
                           obscureText: false,
-                          lableText: "قيمة الرصيد",
-                          iconcolor: primaryGreenColor,
+                          labelText: "قيمة الرصيد",
+                          iconColor: primaryGreenColor,
                           suffixWidget: Container(
                             height: 1,
                             width: 1,

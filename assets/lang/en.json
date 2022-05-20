@@ -7,9 +7,10 @@
   "تأكيد كلمة المرور": "Confirm PassWord",
   "نسيت كلمة المرور؟": "Forget PassWord ?",
   "لا أمتلك حساب؟ طلب تسجيل جديد": "New registration request?",
-  "الرجاء ادخال رقم الجوال": "please enter phone number",
+  "الرجاء ادخال رقم الجوال": "please enter your phone number",
   "الرجاء ادخال كلمه المرور": "please enter your password",
   "الرجاء تاكيد كلمه المرور": "please confirm your password",
+  "الرجاء ادخال الاسم": "please enter your name",
   "الرجاء ادخال البريد الالكترونى": "please enter your email",
   "ادخل البريد الالكتروني لإرسال الكود علية": "Enter the email to send the code",
   "ادخل الرمز المرسل على بريدك الالكتروني": "Enter the code sent to your email",
@@ -51,7 +52,21 @@
   "طلب رصيد": "Credit request",
   "كشف حساب": "Account statement",
   "نقاط البيع": "Point of Sale",
-  "د.ع": "D.A"
+  "د.ع": "D.A",
+  "تم ارسال طلب تعديل بياناتك للاداره": "A request to modify your data has been sent to the administration",
+  "و سيتم التواصل معك": "You will be contacted",
+  "الرصيد المطلوب : ":"Required balance:",
+  "تحويل الرصيد": "Balance Transfer",
+  "هل انت متاكد من تحويل مبلغ ":"Are you sure the amount has transferred ",
+  "ل": "for",
+  "تم تحويل مبلغ": "Amount has been transferred",
+  "نقاط البيع المعلقه": "Outstanding Selling Point",
+  "اضافه صلاحيات": "Add Powers",
+  "الصلاحيات: ": "Powers: ",
+  "حذف": "Delete",
+  "تعديل": "Edit",
+  "صلاحيات": "Powers"
+
 
 
 

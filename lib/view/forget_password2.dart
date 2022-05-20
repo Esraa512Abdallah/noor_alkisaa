@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 import 'package:noor_alkisaa/view/widgets/custom_gradient_button.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 

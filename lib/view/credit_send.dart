@@ -67,15 +67,15 @@ class _CreditSendState extends State<CreditSend> {
                     padding: EdgeInsets.only(right: 15,top: 25,left: 15,bottom: 15),
                     child: Column(
                       children: [
-                        CustomTextFeildWithLable(
+                        CustomTextFieldWithLabel(
                           hintText: "0123456789",
                           keyboardType: TextInputType.number,
-                          onClick: (val) {
+                          onSaved: (val) {
                             _value = val;
                           },
                           obscureText: false,
-                          lableText: "رقم الجوال/الرقم التعريفي",
-                          iconcolor: primaryGreenColor,
+                          labelText: "رقم الجوال/الرقم التعريفي",
+                          iconColor: primaryGreenColor,
                           suffixWidget: Container(
                             height: 1,
                             width: 1,
@@ -84,15 +84,15 @@ class _CreditSendState extends State<CreditSend> {
                         SizedBox(
                           height: SizeConfig.defaultSize! * 3,
                         ),
-                        CustomTextFeildWithLable(
+                        CustomTextFieldWithLabel(
                           hintText: "10.000",
                           keyboardType: TextInputType.number,
-                          onClick: (val) {
+                          onSaved: (val) {
                             _value = val;
                           },
                           obscureText: false,
-                          lableText: "قيمة الرصيد",
-                          iconcolor: primaryGreenColor,
+                          labelText: "قيمة الرصيد",
+                          iconColor: primaryGreenColor,
                           suffixWidget: Container(
                             height: 1,
                             width: 1,

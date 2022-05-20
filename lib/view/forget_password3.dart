@@ -3,7 +3,7 @@ import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 import 'package:noor_alkisaa/view/widgets/custom_gradient_button.dart';
 import 'package:noor_alkisaa/view/widgets/labeled_field.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 
 class ForgetPasswordScreen3 extends StatefulWidget {
   const ForgetPasswordScreen3({Key? key}) : super(key: key);
@@ -81,16 +81,16 @@ class _ForgetPasswordScreen3State extends State<ForgetPasswordScreen3> {
                             SizedBox(
                               height: SizeConfig.defaultSize! * 3,
                             ),
-                            CustomTextFeildWithLable(
+                            CustomTextFieldWithLabel(
                               hintText:"****************" ,
-                              onClick: (val) {
+                              onSaved: (val) {
                                 _password = val;
                               },
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: _isObscure1,
-                              lableText: AppLocal.of(context)
+                              labelText: AppLocal.of(context)
                                   .getTranslated("كلمة المرور"),
-                              iconcolor: primaryGreenColor,
+                              iconColor: primaryGreenColor,
                               suffixWidget: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -111,16 +111,16 @@ class _ForgetPasswordScreen3State extends State<ForgetPasswordScreen3> {
                             SizedBox(
                               height: SizeConfig.defaultSize! * 3,
                             ),
-                            CustomTextFeildWithLable(
+                            CustomTextFieldWithLabel(
                               hintText: "******************",
-                              onClick: (val) {
+                              onSaved: (val) {
                                 _confirmPassword = val;
                               },
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: _isObscure2,
-                              lableText: AppLocal.of(context)
+                              labelText: AppLocal.of(context)
                                   .getTranslated("تأكيد كلمة المرور"),
-                              iconcolor: primaryGreenColor,
+                              iconColor: primaryGreenColor,
                               suffixWidget: IconButton(
                                 onPressed: () {
                                   setState(() {

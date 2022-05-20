@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:noor_alkisaa/api/authentication.dart';
 import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 import 'package:noor_alkisaa/view/widgets/custom_button.dart';
 import 'package:noor_alkisaa/view/widgets/custom_gradient_button.dart';
 import 'package:noor_alkisaa/view/widgets/labeled_field.dart';
-import 'package:noor_alkisaa/view_model/app_local.dart';
+import 'package:noor_alkisaa/controller/app_local.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -24,6 +25,8 @@ class _SignInScreenState extends State<SignInScreen> {
     //final textEditingController2 = TextEditingController();
     //bool _passwordVisible = false;
     // final _userPasswordController = TextEditingController();
+
+
     String? _passWord, _phoneNumber;
 
     SizeConfig().init(context);
@@ -75,35 +78,38 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Column(
                           children: [
                             Container(
-                              child: CustomTextFeildWithLable(
+                              child: CustomTextFieldWithLabel(
 
-                                onClick: (val) {
+                                onSaved: (val) {
                                   setState(() {
                                     _phoneNumber = val;
                                   });
                                 },
                                 keyboardType: TextInputType.phone,
                                 obscureText: false,
-                                lableText: AppLocal.of(context)
+                                labelText: AppLocal.of(context)
                                     .getTranslated("رقم الجوال"),
-                                iconcolor: primaryGreenColor,
+                                iconColor: primaryGreenColor,
                                 suffixWidget:Image.asset("assets/images/phone_icon.png",height: 50,width: 50,),
                                 hintText: "0123456789",
+                                errorMessage: AppLocal.of(context).getTranslated('الرجاء ادخال رقم الجوال'),
                               ),
                             ),
                             SizedBox(
                               height: SizeConfig.defaultSize! * 3,
                             ),
-                            CustomTextFeildWithLable(
-                              onClick: (val) {
+                            CustomTextFieldWithLabel(
+
+                              errorMessage: AppLocal.of(context).getTranslated('الرجاء ادخال كلمه المرور'),
+                              onSaved: (val) {
                                 _passWord = val;
                               },
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: _isObscure,
                               hintText: "********************",
-                              lableText: AppLocal.of(context)
+                              labelText: AppLocal.of(context)
                                   .getTranslated("كلمة المرور"),
-                              iconcolor: primaryGreenColor,
+                              iconColor: primaryGreenColor,
                               suffixWidget: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -127,12 +133,31 @@ class _SignInScreenState extends State<SignInScreen> {
                             CustomgradentButton(
                               buttonWidth: null,
                               onPressed: () {
+
+                              //  Authentication.Login(email, password, type);
+
                                 if (_formKey.currentState!.validate()) {
 
                                   _formKey.currentState!.save();
 
                                   Navigator.pushNamed(context, "HomeScreen");
                                   _formKey.currentState?.reset();
+
+
+                                    Authentication.SigIn(_phoneNumber!, _passWord!,"TRADER");
+                                    //     .then(
+                                    //       (user) => _formKey.currentState?.showSnackBar(
+                                    //     SnackBar(
+                                    //       backgroundColor: Colors.teal[200],
+                                    //       content: Text(
+                                    //         'user has been login',
+                                    //         style: TextStyle(color: Colors.black,fontSize: 20,),
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // );
+
+
 
 
 
@@ -146,6 +171,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               borderColor: Colors.white,
                               alignment: Alignment.center,
                               buttonheight: SizeConfig.defaultSize! * 6,
+
+
                             ),
                             SizedBox(
                               height: 10,
@@ -164,9 +191,10 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             ),
                             CustomButton(
+                              buttonWidth: MediaQuery.of(context).size.width,
                               borderRadius: 15.0,
                               borderColor: primaryGreenColor,
-                              buttonheight: SizeConfig.defaultSize! * 5.7,
+                              buttonHeight: SizeConfig.defaultSize! * 5.7,
                               color: Colors.white,
                               onPressed: () {
                                 Navigator.pushNamed(context, "SignUpScreen");

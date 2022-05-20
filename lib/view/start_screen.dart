@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 import 'package:noor_alkisaa/view/widgets/custom_button.dart';
-import 'package:noor_alkisaa/view_model/lang.dart';
+import 'package:noor_alkisaa/controller/lang.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -74,8 +74,9 @@ class StartScreen extends StatelessWidget {
                           init: LangViewModel(),
                           builder: (controller) {
                             return CustomButton(
+                              buttonWidth: MediaQuery.of(context).size.width,
                               borderRadius: 5.0,
-                              buttonheight: SizeConfig.defaultSize! * 5.8,
+                              buttonHeight: SizeConfig.defaultSize! * 5.8,
                               borderColor: Colors.grey.shade300,
                               color: Colors.white,
                               child: Row(
@@ -111,8 +112,9 @@ class StartScreen extends StatelessWidget {
                           init: LangViewModel(),
                           builder: (controller) {
                             return CustomButton(
+                              buttonWidth: MediaQuery.of(context).size.width,
                               borderRadius: 5.0,
-                              buttonheight: SizeConfig.defaultSize! * 5.8,
+                              buttonHeight: SizeConfig.defaultSize! * 5.8,
                               borderColor: Colors.grey.shade300,
                               color: Colors.white,
                               child: Row(

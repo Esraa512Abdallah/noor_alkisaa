@@ -31,6 +31,8 @@ dependencies:
   badges: ^2.0.2
   image_picker: ^0.8.4+4
   pin_code_fields: ^7.4.0
+  flutter_countdown_timer: ^4.1.0
+  http: ^0.13.4
   animated_splash_screen: ^1.2.0
   get:
   flutter:

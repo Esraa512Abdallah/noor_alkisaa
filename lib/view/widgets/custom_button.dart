@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -11,13 +10,14 @@ class CustomButton extends StatelessWidget {
   final double borderRadius;
 
   final Color? borderColor;
-  final double? buttonheight ;
+  final double? buttonHeight ;
+  final double buttonWidth ;
 
   CustomButton({
-    required this.buttonheight,
+    required this.buttonHeight,
+    required this.buttonWidth ,
     required this.color,
     this.alignment = Alignment.center,
-   // this.fontsize = 18,
     this.text = ' ',
     this.borderColor,
     required this.onPressed,
@@ -30,8 +30,8 @@ class CustomButton extends StatelessWidget {
     // TODO: implement build
     return Container(
         child: Container(
-          width: MediaQuery.of(context).size.width,
-        height: (buttonheight !=null)? buttonheight! : null,
+          width: (buttonWidth !=null)? buttonWidth : null ,
+        height: (buttonHeight !=null)? buttonHeight! : null,
         child: FlatButton(
 
 
@@ -39,6 +39,8 @@ class CustomButton extends StatelessWidget {
           onPressed: () {
             onPressed();
           },
+
+
           color: color,
           padding: EdgeInsets.all(10),
           shape: RoundedRectangleBorder(
