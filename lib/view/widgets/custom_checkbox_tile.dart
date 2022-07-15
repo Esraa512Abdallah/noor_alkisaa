@@ -30,9 +30,10 @@ class _CustomCheckBoxTileState extends State<CustomCheckBoxTile> {
       title: Text(
         widget.title,
         style: TextStyle(
-            color: selected ? primaryColor : Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w500),
+          color: selected ? primaryColor : Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
       ),
       selectedTileColor: primaryColor,
       trailing: Container(
@@ -46,7 +47,7 @@ class _CustomCheckBoxTileState extends State<CustomCheckBoxTile> {
         child: Icon(
           Icons.check,
           color: selected ? primaryColor : Colors.white,
-          size:18,
+          size: 18,
         ),
       ),
     );

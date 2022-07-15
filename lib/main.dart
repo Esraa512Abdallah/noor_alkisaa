@@ -2,15 +2,14 @@
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutter/src/widgets/binding.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:noor_alkisaa/try.dart';
-import 'package:noor_alkisaa/view/add_new_sell_point.dart';
 import 'package:noor_alkisaa/view/add_powers.dart';
 import 'package:noor_alkisaa/view/add_powers2.dart';
 import 'package:noor_alkisaa/view/address.dart';
 import 'package:noor_alkisaa/view/balance_requests.dart';
-import 'package:noor_alkisaa/view/chating.dart';
 import 'package:noor_alkisaa/view/credit_move.dart';
 import 'package:noor_alkisaa/view/credit_move2.dart';
 import 'package:noor_alkisaa/view/credit_request.dart';
@@ -27,10 +26,8 @@ import 'package:noor_alkisaa/view/signin_screen.dart';
 import 'package:noor_alkisaa/view/signup_screen.dart';
 import 'package:noor_alkisaa/view/start_screen.dart';
 import 'package:noor_alkisaa/view/technical_support.dart';
-import 'package:noor_alkisaa/view/timer.dart';
 import 'package:noor_alkisaa/view/widgets/pin_code_fields.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/src/widgets/binding.dart';
 
 import 'controller/app_local.dart';
 import 'controller/lang.dart';
@@ -105,7 +102,7 @@ class _MyAppState extends State<MyApp> {
           ),
 
         ),
-        nextScreen: SignInScreen(),
+        nextScreen: SignUpScreen(),
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Colors.white,
       ),
@@ -128,7 +125,6 @@ class _MyAppState extends State<MyApp> {
         "CreditMove2": (context) => CreditMove2(),
         "Address": (context) => Address(),
         "SellPoint": (context) => SellPoint(),
-      //  "AddNewSellPoint": (context) => AddNewSellPoint(),
         "DetailsOfSellsPoint": (context) => DetailsOfSellsPoint(),
         "DataModification": (context) => DataModification(),
         "BalanceRequest":(context)=>BalanceRequest(),

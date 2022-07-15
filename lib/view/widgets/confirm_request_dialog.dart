@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 
 class ConfirmRequestDialog extends StatelessWidget {
- // const ConfirmRequestDialog({Key? key}) : super(key: key);
 
   Widget widget ;
    double dialogHeight;//SizeConfig.defaultSize! * 31

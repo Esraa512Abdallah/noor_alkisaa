@@ -8,15 +8,15 @@ import 'package:noor_alkisaa/model/signin_model.dart';
 class Authentication {
 
   static Future<SigInModel> SigIn(String phone ,String password , String type ) async {
-    final response = await post(Uri.parse(Auth_Sigin),
-        headers: <String, String>{
-          'Content-Type': 'application/json;charset=UTF-8'
-        },
+    final response = await post(
+
+        Uri.parse(Auth_Sigin),
+        headers: <String, String>{'Content-Type': 'application/json;charset=UTF-8'},
         body: jsonEncode(<String, String>{
           "phone": phone,
           "password": password,
-          "type": type ,
-        }));
+          "type": type ,}),
+                                );
     if (response.statusCode == 200) {
       //print(response.body);
 

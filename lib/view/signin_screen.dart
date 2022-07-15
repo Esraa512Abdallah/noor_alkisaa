@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noor_alkisaa/api/authentication.dart';
+import 'package:noor_alkisaa/api/city_api.dart';
 import 'package:noor_alkisaa/helper/constance.dart';
 import 'package:noor_alkisaa/helper/sized_config.dart';
 import 'package:noor_alkisaa/view/widgets/custom_button.dart';
@@ -17,6 +18,13 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   bool _isObscure = true;
   final GlobalKey<FormState> _formKey = GlobalKey();
+
+  @override
+   void initState(){
+    super.initState();
+    CityApi.getAllCities();
+    print("successs");
+  }
 
   @override
   Widget build(BuildContext context) {
